@@ -1,20 +1,181 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espadinha GAME</title>
-    <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="sprites.css">
+    <title>Cerecherry</title>
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <link rel="stylesheet" type="text/css" href="sprites.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font.css">
 </head>
 <body>
-    <br>
-    <br>
-    <div id="container-fase">
-
+    <div id="container-game" >
+        <div id="container-buttons">
+            <div id="button-allfases" onclick="allFases()"></div>
+            <div id="fase-number"></div>
+            <div id="button-refresh"onclick="refreshFase()"></div>
+        </div>
+        <div id="fase-name"></div>
+        <div id="container-fase">
+            <!-- CONTENT -->
+        </div>
+        <div class="display-items">
+            <div id="button-help" onclick="showComments()"></div>
+        </div>
+   
     </div>
-    <script type="module" src="fase.js"></script>
-    <script type="module" src="index.js"></script>
+    <script src="fase.js"></script>
+    <script src="hammer.min.js"></script> 
+    <script>
+
+        var currentLevel = 1;
+        var showScreenChoiceFase;
+        var passedLevels;
+
+
+
+        if(localStorage["level"]){
+           this.currentLevel = +localStorage["level"];
+        }else{
+           localStorage["level"] = 1;
+        }
+        
+        var srcfase = document.createElement('script');
+        srcfase.src = "./fases/fase"+currentLevel+".js";
+        document.body.appendChild(srcfase);
+
+
+        if(localStorage["screenChoice"]){
+            this.showScreenChoiceFase = localStorage["screenChoice"] == 'true' ?  true : false ;
+        }else{
+            localStorage["screenChoice"] = 'false';
+        }
+
+        if(localStorage["passedLevels"]){
+            this.passedLevels = +localStorage["passedLevels"];
+        }else{
+            localStorage["passedLevels"] = 0; 
+        }
+
+        if(showScreenChoiceFase == true){ 
+            this.renderingAllFases();
+        } 
+        
+        function refreshFase(numeroFase){
+            localStorage["level"] = +numeroFase || +this.currentLevel;
+            document.location.reload(false);
+        }
+
+        function proximaFase(){
+            localStorage["level"] = this.currentLevel + 1;
+            if(this.passedLevels < this.currentLevel){
+                localStorage["passedLevels"] = passedLevels + 1;
+            }
+            document.location.reload(false);
+        }
+
+        function allFases(){
+            localStorage["screenChoice"] = 'true';
+            document.location.reload(false);
+        }
+        function pickFase(numeroFase){
+            localStorage["screenChoice"] = 'false'
+            this.refreshFase(numeroFase); 
+        }
+
+        function renderingAllFases(){
+            document.getElementById("container-game").classList.add("screenAllFases")
+            document.getElementById("fase-number").textContent = "world 1";
+            document.getElementById("fase-name").textContent = "CEREJEIRA"; 
+            document.getElementsByClassName("display-items")[0].innerHTML = "mundos"; 
+
+            let containerFase = document.getElementById("container-fase");
+            containerFase.style.gridTemplateColumns = 'none';
+            containerFase.style.zoom = 'none';
+            containerFase.textContent = "";
+
+            let containerGridLevels = document.createElement('div');
+            containerGridLevels.classList.add('container-grid-levels');
+            containerFase.appendChild(containerGridLevels);
+            for(let i=1 ; i <= 12 ; i++){
+                let buttonLevel = document.createElement('div');
+                buttonLevel.classList.add('button-level');
+                buttonLevel.textContent = i;
+                let handleFaseFunction = () => {this.pickFase(i)};
+                if(i <= +this.passedLevels){
+                    buttonLevel.classList.add("level-passed");
+                    buttonLevel.addEventListener('click',  handleFaseFunction )
+                  
+                }
+                if(i == +this.passedLevels + 1){
+                    buttonLevel.classList.add("level-current");
+                    buttonLevel.addEventListener('click',  handleFaseFunction )
+                }
+                if(i > this.passedLevels + 1){
+                    buttonLevel.classList.add("level-locked");
+                }
+                containerGridLevels.appendChild(buttonLevel);
+            }
+            
+        }
+        // ================== MOVIMENTACAO MOBILE =================================== //
+
+        var mc = new Hammer(document.body);
+
+        mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+       
+        var auxKeyCode = 48; //tecla 0;
+
+        mc.on("panleft panright panup pandown panend", function(e) {
+           
+           if(e.type === "panleft") { 
+              auxKeyCode = 37;   
+           } else if(e.type === "panright") {
+              auxKeyCode = 39;
+              
+           } else if(e.type === "panup") {
+              auxKeyCode = 38;
+             
+           } else if(e.type === "pandown") {
+              auxKeyCode = 40;  
+           } 
+           if(e.type === "panend"){
+             document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
+           }
+            
+        });
+
+       
+        
+
+    </script>
+
+    
+    <script>
+       
+        /*
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function(){
+           if(request.readyState === 4) {
+              if(request.status === 200) {
+                containerFase.innerHTML = request.responseText;        
+              } else {
+                containerFase.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
+              }
+           }
+        };
+
+            let containerFase = document.getElementById('container-fase');
+            let script = document.createElement('script');
+            const idFase = window.location.href.split("/").reverse()[0];
+            script.src = './fragments/fase1.html'
+            containerFase.appendChild(script);
+        */
+     
+        
+
+    </script>
 </body>
 </html>

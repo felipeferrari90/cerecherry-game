@@ -1,0 +1,331 @@
+*{
+   box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #FFC000;
+    font-family: 'K2D', sans-serif;
+}
+
+#container-game{
+   flex-direction: column;
+   display: flex;
+   flex: 0;
+   justify-content:space-between;
+   color: black;
+   height: 100%;
+}
+#container-fase{
+   
+    position: relative;
+    display: grid;
+    margin: 0 auto;
+    
+}
+#container-buttons{
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   flex: 0;
+}
+
+#container-game.screenAllFases #fase-name {
+   letter-spacing: 4px;
+   font-weight: bolder;
+}
+#container-game.screenAllFases #fase-number {
+   padding-top: 8px;
+   font-size: 15px;
+   display: block;
+   margin: 0 auto;
+}
+#container-game.screenAllFases #button-refresh, #container-game.screenAllFases #button-allfases{
+   display: none;
+}
+
+#fase-name{
+   font-family: 'K2D';
+   font-weight: bold;
+   text-align: center;
+}
+#fase-number{
+   font-size: 45px;
+   font-family: 'K2D';
+   font-weight: 500;
+   align-self:flex-start;
+   
+}
+#button-refresh{
+   background-image: url("./icons/refresh.png"); 
+}
+#button-allfases{
+   background-image: url("./icons/allFases.png"); 
+}
+#button-help{
+   background-image: url("./icons/help.png"); 
+}
+
+#container-game.screenAllFases .display-items{
+   justify-content: flex-start;
+   height: 70px;
+   background-image: url('./sprites/espada-esquerda.png');
+   background-repeat: no-repeat;
+   text-indent: 66px;
+   background-position-x: 16px;
+}
+
+
+
+.display-items{
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   width: 100%;
+ 
+}
+.display-items  #button-help{
+  align-self: center;
+  margin: auto 0 auto auto;
+}
+.display-items{
+   margin-top: 24px;
+   height: 70px;
+  
+   justify-content: center;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   zoom: 1;
+}
+
+.tile{
+   background-color: rgb(242, 242, 242);
+   max-width: 70px;
+   max-height: 70px;
+   position: relative;
+   border: 1px solid  rgb(242, 242, 242);
+}
+.tile.nully{
+   opacity: 1;
+   background-image: unset;
+   background-color: transparent;
+   border: 1px solid transparent;
+}
+
+.tile.border-baixo.border-esquerda{
+   border-bottom-left-radius: 20px;
+}
+.tile.border-baixo.border-direita{
+   border-bottom-right-radius: 20px;
+}
+.tile.border-cima.border-esquerda{
+   border-top-left-radius: 20px;
+}
+.tile.border-cima.border-direita{
+   border-top-right-radius: 20px;
+}
+
+
+.current::after{
+    background-color: blueviolet !important;
+      position: absolute;
+     /* background: rgba(142, 68, 173, 1); */
+      box-shadow: 0 0 0 0 rgba(142, 68, 173, 1);
+      animation: pulse 1s infinite;
+      content: "";
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+}
+
+.dead.current::after , .win.current::after{
+   content : unset
+}
+
+
+.dead{
+   background-color: red !important;
+}
+.win{
+   background-color:green !important;
+}
+
+div[class^="trace"]{
+    position: absolute;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    box-sizing: border-box;
+  
+}
+
+.trace-cima , .trace-baixo{
+   width: 1px;
+   height: 51%;
+   left: 49%
+}
+.trace-esquerda, .trace-direita{
+   width: 54%;
+   height: 1px;
+   top: 49%
+}
+.trace-cima {
+   top: -3px
+}
+
+.trace-baixo{
+   bottom: 0
+}
+.trace-esquerda{
+   left:-3px
+}
+.trace-direita{
+   right: -1px;
+}
+.border-cima{
+   border-top: 1px solid black
+}
+.border-baixo{
+   border-bottom: 1px solid black
+}
+.border-direita{
+   border-right: 1px solid black
+}
+.border-esquerda{
+   border-left: 1px solid black;
+}
+.container-grid-levels{
+   display: inline-grid;
+   grid-template-columns: repeat(4,70px);
+   grid-template-rows: repeat(3,70px);
+   gap: 14px 8px;
+   padding: 16px;
+}
+.button-level{
+   cursor: grab;
+   background-color: whitesmoke;
+   text-decoration: none;
+   width: 100%;
+   height:  100%;
+   border-radius: 20px;
+   font-size: 24px;
+   font-weight: bolder;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   text-align: center;
+   padding-block-start: 25%;
+   color: #D85A23;
+}
+
+.level-locked{
+   background-color:  #FFe080;
+   color: #FFe080;
+}
+.level-locked::after{
+   position: absolute;
+   content: "  ";
+   width: 32px;
+   height: 35px;
+   background-size: cover;
+   background-image: url('./icons/lock.png');
+   background-repeat: no-repeat;
+}
+
+.level-current::after{
+   content : "   ";
+   display:block;
+   position: relative;
+   width: 100%;
+   height:100%;
+   top: -109%;
+   left: 36%;
+   background-position-y: -20px ;
+   background-image: url('./sprites/inicio-cima.png');
+   background-repeat: no-repeat;
+   
+   
+}
+/*
+.button-level.level-current{
+   text-indent: 1.5ch;
+   float: right;
+}
+*/
+
+
+.modal-comments{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   padding: 15px;
+   background-color:black;
+   opacity: 0.8;
+  
+}
+
+
+.speak:last-child{
+   position:absolute;
+   width: 80%;
+   background-color:  rgba(255, 255, 255, 1);
+   padding: 32px;
+   border-radius: 15px;
+   border: 2px solid black;
+   z-index: 10;
+   top:50%;
+   left:50%;
+   transform: translate(-50%, -50%);
+   text-align: justify;
+}
+.speak:not(.speak:last-child){
+   display: none;
+}
+
+.quit{
+   position: absolute;
+   width: 32px;
+   height: 36px;
+   padding: 10px;
+   right: 8px;
+   bottom: 8px;
+   margin-top: 16px;
+   clear: both;
+   background-image: url("./icons/x.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+   
+}
+#item-espada{
+   background-image: url("./sprites/espada-acima.png");
+   background-size: contain;
+   background-repeat: no-repeat;
+   text-indent: 30px;
+   height: 40px;
+   width: 40px;
+   font-size: 24px;
+   zoom: 1;
+   align-self: center;
+   margin-left: 16px;
+}
+#button-refresh , #button-allfases , #button-help{
+   height: 50px;
+   width: 50px;
+   background-repeat: no-repeat;
+   background-size: auto;
+   background-position: center;
+}
+
+
+@keyframes pulse{
+   0% {
+     transform: scale(0.25);
+     box-shadow: 0 0 0 0 rgba(142, 68, 173, 0.7);
+   }
+   
+   60% {
+     transform: scale(0.5);
+     box-shadow: 0 0 0 20px rgba(142, 68, 173, 0);
+   }
+   
+   100% {
+     transform: scale(0.25);
+     box-shadow: 0 0 0 0 rgba(142, 68, 173, 0);
+   }
+}
