@@ -1,0 +1,88 @@
+
+.tile{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./sprites/point.png");
+}
+.wall{
+    background-image: url("./sprites/parede.png");
+}
+.cereja-1{
+    background-image: url("./sprites/cereja-1.png");
+ 
+}
+.cereja-2{
+    background-image: url("./sprites/cereja-2.png");
+}
+.cereja-3{
+    background-image: url("./sprites/cereja-3.png");
+}
+.cereja-4{
+    background-image: url("./sprites/cereja-4.png");
+}
+.cereja-5{
+    background-image: url("./sprites/cereja-5.png");
+}
+.cereja-6{
+    background-image: url("./sprites/cereja-6.png");
+}
+.cereja-7{
+    background-image: url("./sprites/cereja-7.png");
+}
+.cereja-8{
+    background-image: url("./sprites/cereja-8.png");
+}
+.cereja-9{
+    background-image: url("./sprites/cereja-9.png");
+ 
+}
+.espada-cima{
+    background-image: url("./sprites/espada-acima.png");
+}
+.espada-baixo{
+    background-image: url("./sprites/espada-baixo.png");
+}
+.espada-direita{
+    background-image: url("./sprites/espada-direita.png");
+}
+.espada-esquerda{
+    background-image: url("./sprites/espada-esquerda.png");
+}
+.saida-closed{
+    background-image: url("./sprites/saida-fechada.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.saida-open{
+    background-image: url("./sprites/saida.png");
+}
+.inicio-baixo, .inicio-cima,.inicio-direita,.inicio-esquerda{
+   position: absolute;
+   width: 50px;
+   height: 50px;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+.inicio-cima {
+   top: -50%;
+   left: 15%;
+   background-image: url("./sprites/inicio-cima.png");
+}
+.inicio-baixo{
+   bottom: -50%;
+   left: 15%;
+   z-index: 100;
+   background-image: url("./sprites/inicio-baixo.png");
+
+}
+.inicio-esquerda{
+   top: 15%;
+   left: -50%;
+   background-image: url("./sprites/inicio-esquerda.png");
+
+}
+.inicio-direita{
+   background-image: url("./sprites/inicio-direita.png");
+   top: 15%;
+   right: -50%;
+}

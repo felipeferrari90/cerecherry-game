@@ -1,0 +1,100 @@
+*{
+   box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    background-color: darkgrey
+}
+
+#container-fase{
+    display: grid;
+    margin: 0 auto;
+}
+.tile{
+   background-color: rgb(242, 242, 242);
+   width: 70px;
+   height: 70px;
+   position: relative;
+   border: 1px solid  rgb(242, 242, 242);
+}
+.tile.nully{
+   opacity: 1;
+   background-image: unset;
+   background-color: transparent;
+   border: 1px solid transparent;
+}
+
+
+
+.tile.border-baixo.border-esquerda{
+   border-bottom-left-radius: 10px;
+}
+.tile.border-baixo.border-direita{
+   border-bottom-right-radius: 10px;
+}
+.tile.border-cima.border-esquerda{
+   border-top-left-radius: 10px;
+}
+.tile.border-cima.border-direita{
+   border-top-right-radius: 10px;
+}
+
+div:not(.nully) + .tile.nully {
+
+}
+
+.current{
+    background-color: blueviolet !important;
+}
+.dead{
+   background-color: red !important;
+}
+.win{
+   background-color:green !important;
+}
+
+div[class^="trace"]{
+    position: absolute;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.trace-cima , .trace-baixo{
+   width: 1px;
+   height: 54%;
+   left: 48%
+}
+.trace-esquerda, .trace-direita{
+   width: 54%;
+   height: 1px;
+   top: 47%
+}
+.trace-cima {
+   top: -6px
+}
+
+.trace-baixo{
+   bottom: 0
+}
+.trace-esquerda{
+   left:-6px
+}
+.trace-direita{
+   right: 0
+}
+.border-cima{
+   border-top: 1px solid black
+}
+.border-baixo{
+   border-bottom: 1px solid black
+}
+.border-direita{
+   border-right: 1px solid black
+}
+.border-esquerda{
+   border-left: 1px solid black;
+}
+
