@@ -21,7 +21,7 @@
             <!-- CONTENT -->
         </div>
         <div class="display-items">
-            <div id="button-help" onclick="showComments()"></div>
+            <div id="button-help"></div>
         </div>
    
     </div>
@@ -119,16 +119,25 @@
             }
             
         }
-        // ================== MOVIMENTACAO MOBILE =================================== //
 
-        var mc = new Hammer(document.body);
+       // document.getElementById("button-help").addEventListener("onclick",()=>{console.log("modal PORRA")})
+       console.log(document.getElementById("button-help"))
+       // ================== MOVIMENTACAO MOBILE =================================== //
+
+        var mc = new Hammer(document.getElementById("container-game"));
+        var mfase = new Hammer(document.getElementById("container-fase"));
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-       
-        var auxKeyCode = 48; //tecla 0;
+        mfase.get("touchstart pandown");
+        mfase.on("touchstart pandown",function(event){
+            if(event.touches.length == 2){
+                alert("doiseventos");
+            }
+        })
 
+        var auxKeyCode = 48; //tecla 0;
+         
         mc.on("panleft panright panup pandown panend", function(e) {
-           
            if(e.type === "panleft") { 
               auxKeyCode = 37;   
            } else if(e.type === "panright") {
@@ -143,37 +152,11 @@
            if(e.type === "panend"){
              document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
            }
-            
         });
 
        
-        
 
-    </script>
-
-    
-    <script>
        
-        /*
-        var request = new XMLHttpRequest();
-
-        request.onreadystatechange = function(){
-           if(request.readyState === 4) {
-              if(request.status === 200) {
-                containerFase.innerHTML = request.responseText;        
-              } else {
-                containerFase.innerHTML = 'An error occurred during your request: ' +  request.status + ' ' + request.statusText;
-              }
-           }
-        };
-
-            let containerFase = document.getElementById('container-fase');
-            let script = document.createElement('script');
-            const idFase = window.location.href.split("/").reverse()[0];
-            script.src = './fragments/fase1.html'
-            containerFase.appendChild(script);
-        */
-     
         
 
     </script>
