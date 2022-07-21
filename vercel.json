@@ -19,7 +19,7 @@
         },
         {
             "src": "/fase",
-            "dest": "index.html"
+            "dest": "server.js"
           },
           {
             "src": "/(.+)",
