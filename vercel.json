@@ -5,12 +5,25 @@
         {
             "src": "./index.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "public/**",
+            "use": "@vercel/static",
+            "config": { "includeFiles": ["public/**"] }
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
             "dest": "/"
-        }
+        },
+        {
+            "src": "/fase",
+            "dest": "index.html"
+          },
+          {
+            "src": "/(.+)",
+            "dest": "public/$1"
+          }
     ]
 }
