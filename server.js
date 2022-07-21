@@ -13,7 +13,7 @@ router.get('/',function(req,res){
 });
 
 app.use('/fase', router)
-app.use(express.static('public'))
+
 
 
 module.exports = app;

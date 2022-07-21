@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cerecherry</title>
-    <link rel="stylesheet" type="text/css" href="game.css">
-    <link rel="stylesheet" type="text/css" href="sprites.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font.css">
+    <link rel="stylesheet" type="text/css" href="./public/game.css">
+    <link rel="stylesheet" type="text/css" href="./public/sprites.css">
+    <link rel="stylesheet" type="text/css" href=".public/fonts/font.css">
 </head>
 <body>
     <div id="container-game" >
@@ -25,8 +25,8 @@
         </div>
    
     </div>
-    <script src="fase.js"></script>
-    <script src="hammer.min.js"></script> 
+    <script src="./public/fase.js"></script>
+    <script src="./public/hammer.min.js"></script> 
     <script>
 
         var currentLevel = 1;
@@ -42,7 +42,7 @@
         }
         
         var srcfase = document.createElement('script');
-        srcfase.src = "./fases/fase"+currentLevel+".js";
+        srcfase.src = "./public/fases/fase"+currentLevel+".js";
         document.body.appendChild(srcfase);
 
 
