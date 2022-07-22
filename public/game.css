@@ -124,8 +124,8 @@ body{
    border-top-right-radius: 20px;
 }
 
-body:not(.nully){
-   box-shadow: 0 0 0 0 rgba(142, 68, 173, 1);
+.tile:not(.nully){
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .current::after{
     background-color: blueviolet !important;
