@@ -14,16 +14,8 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/"
-        },
-        {
-            "src": "/fase",
-            "dest": "server.js"
-          },
-          {
-            "src": "/(.+)",
-            "dest": "public/$1"
-          }
+            "src": "/(.*)" ,
+            "dest": "index.js"
+        }
     ]
 }
