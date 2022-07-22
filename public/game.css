@@ -114,7 +114,9 @@ body{
 .border-baixo, .border-direita{
    box-shadow: 0px 4px 4px #000000;
 }
-
+.tile:not(.border-direita){
+   box-shadow: 0px 4px 4px #FFFFFF;
+}
 
 
 .border-cima{
