@@ -275,7 +275,7 @@ class Fase{
                  this.eleMoveu = null;
                  if(this.items.espada == 1)
                      new Audio('./songs/zequinha eu posso morrer uma vez.mp3')?.play() 
-                 else if(this.items.espada  <= 0){
+                 else if(this.items.espada >= 0){
                      new Audio('./songs/zequinha puta que la mierda.mp3')?.play();
                  }
               }
