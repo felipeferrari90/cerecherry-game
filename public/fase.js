@@ -196,9 +196,11 @@ class Fase{
           let cherryClass = classesList.find(e => /^cereja-/gmi.test(e))
           this.harvestCherry(cherryClass.split('-')[1])
           if(this.tilesCherry[this.tilesCherry.length - 1].length == 0){
-             document.querySelectorAll(".saida-closed")?.forEach((tile)=>{
+             document.querySelectorAll(".saida-closed")?.forEach((tile,i)=>{
                 tile.classList.add("saida-open")
-                new Audio("./songs/zequinha eu nao ganhei nao.mp3")?.play();   
+                if(i == 0){
+                    new Audio("./songs/zequinha eu nao ganhei nao.mp3")?.play();  
+                }
              })
           }
        }
@@ -273,7 +275,7 @@ class Fase{
                  this.eleMoveu = null;
                  if(this.items.espada == 1)
                      new Audio('./songs/zequinha eu posso morrer uma vez.mp3')?.play() 
-                 else{
+                 else if(this.items.espada > 1){
                      new Audio('./songs/zequinha puta que la mierda.mp3')?.play();
                  }
               }
