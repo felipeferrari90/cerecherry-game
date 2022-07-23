@@ -271,7 +271,8 @@ class Fase{
             }else{
                
               if(this.eleMoveu){
-                 this.items.espada == 0 ? this.morrer() : this.items.espada-- 
+                 this.items.espada == 0 ? this.morrer() : false;
+                 this.items.espada-- 
                  this.eleMoveu = null;
                  if(this.items.espada == 1)
                      new Audio('./songs/zequinha eu posso morrer uma vez.mp3')?.play() 
