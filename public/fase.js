@@ -279,9 +279,8 @@ class Fase{
                  else if(this.items.espada >= 0){
                      new Audio('./songs/zequinha puta que la mierda.mp3')?.play();
                  }
-              }
-                
-                this.displayItems();   
+              } 
+              this.displayItems();   
             }
         } 
     }
