@@ -20,7 +20,7 @@ body{
     position: relative;
     display: grid;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: scroll;
     scroll-behavior: smooth;
     padding-top: 50px;
     padding-bottom: 50px;
