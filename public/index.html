@@ -125,7 +125,12 @@
        // ================== MOVIMENTACAO MOBILE =================================== //
 
         var mc = new Hammer(document.getElementById("container-game"));
-        var mfase = new Hammer(document.getElementById("container-fase"));
+
+        var mfase = new Hammer(document.getElementById("container-fase"),{});
+
+        mfase.get('pinch').set({
+            enable: true
+        });
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
         mfase.get("touchstart pandown");
@@ -153,6 +158,10 @@
              document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
            }
         });
+
+        mfase.on("pinch pinchstart pinchend pinchmove pinchin pinchout",(e)=>{
+             alert("evento: "+ e.type)
+        })
 
         var containerFase = document.getElementById("container-fase");
 
