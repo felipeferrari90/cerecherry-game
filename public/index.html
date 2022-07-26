@@ -158,9 +158,11 @@
              document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
            }
         });
+        
+        var containerFase = document.getElementById("container-fase");
 
         mfase.on("pinchmove",(e)=>{
-             alert("evento: "+ e.type)
+             if(e.touches.length > 1) containerFase.scrollTop += e.deltaY;
         })
 
         var containerFase = document.getElementById("container-fase");
