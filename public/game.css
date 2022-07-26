@@ -24,6 +24,7 @@ body{
     overflow-y: hidden;
     padding-top: 50px;
     padding-bottom: 50px;
+    mouse-wheel:horizontal;
 }
 #container-buttons{
    display: flex;
