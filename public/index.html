@@ -157,8 +157,7 @@
         var containerFase = document.getElementById("container-fase");
 
         window.addEventListener("wheel", function (e) {
-            if (e.deltaY > 0) containerFase.scrollTop += 100;
-            else item.scrollTop  -= 100;
+          containerFase.scrollTop += e.deltaY;
         });
 
        
