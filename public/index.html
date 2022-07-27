@@ -126,16 +126,15 @@
 
         var mc = new Hammer(document.getElementById("container-game"));
 
-        var mfase = new Hammer(document.getElementById("container-fase"),{});
+        var mfase = new Hammer(document.getElementById("container-fase"));
 
-        mfase.get('pinch').set({
-            enable: true
-        });
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-        mfase.get("touchstart pandown");
+        mfase.get("touchpress pandown");
+
         mfase.on("touchstart pandown",function(event){
-            if(event.touches.length == 2){
+            console.log('EVENTO'+e.type)
+            if(event.touches.length > 1){
                 alert("doiseventos");
             }
         })
@@ -143,25 +142,25 @@
         var auxKeyCode = 48; //tecla 0;
          
         mc.on("panleft panright panup pandown panend", function(e) {
-           if(e.type === "panleft") { 
-              auxKeyCode = 37;   
-           } else if(e.type === "panright") {
-              auxKeyCode = 39;
-              
-           } else if(e.type === "panup") {
-              auxKeyCode = 38;
-             
-           } else if(e.type === "pandown") {
-              auxKeyCode = 40;  
+           if(e.touches.length < 2 ){
+             if(e.type === "panleft") { 
+               auxKeyCode = 37;   
+             } else if(e.type === "panright") {
+               auxKeyCode = 39;
+             } else if(e.type === "panup") {
+               auxKeyCode = 38;
+             } else if(e.type === "pandown") {
+               auxKeyCode = 40;  
+             } 
+             if(e.type === "panend"){
+               document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
+             }
            } 
-           if(e.type === "panend"){
-             document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
-           }
         });
         
         var containerFase = document.getElementById("container-fase");
 
-        mfase.on("pinchmove",(e)=>{
+        mfase.on("",(e)=>{
              if(e.touches.length > 1) containerFase.scrollTop += e.deltaY;
         })
 
