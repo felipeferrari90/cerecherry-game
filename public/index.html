@@ -130,31 +130,23 @@
 
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-        mfase.get("touchpress pandown");
-
-        mfase.on("touchstart pandown",function(event){
-            console.log('EVENTO'+e.type)
-            if(event.touches.length > 1){
-                alert("doiseventos");
-            }
-        })
 
         var auxKeyCode = 48; //tecla 0;
          
-        mc.on("panleft panright panup pandown panend", function(e) {
+        mc.on("panleft panright panup pandown panend press", function(e) {
            if(e.touches.length < 2 ){
-             if(e.type === "panleft") { 
-               auxKeyCode = 37;   
-             } else if(e.type === "panright") {
-               auxKeyCode = 39;
-             } else if(e.type === "panup") {
-               auxKeyCode = 38;
-             } else if(e.type === "pandown") {
-               auxKeyCode = 40;  
-             } 
-             if(e.type === "panend"){
-               document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
-             }
+                if(e.type === "panleft") { 
+                    auxKeyCode = 37;   
+                } else if(e.type === "panright") {
+                    auxKeyCode = 39;
+                } else if(e.type === "panup") {
+                    auxKeyCode = 38;
+                } else if(e.type === "pandown") {
+                    auxKeyCode = 40;  
+                } 
+                if(e.type === "panend"){
+                document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
+                }
            } 
         });
         
