@@ -126,15 +126,12 @@
 
         var mc = new Hammer(document.getElementById("container-game"));
 
-        var mfase = new Hammer(document.getElementById("container-fase"));
-
-
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
         var auxKeyCode = 48; //tecla 0;
          
         mc.on("panleft panright panup pandown panend press", function(e) {
-           console.log(e.touches.length)
+                alert(e.touches)
      
                 if(e.type === "panleft") { 
                     auxKeyCode = 37;   
