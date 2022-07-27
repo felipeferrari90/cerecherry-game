@@ -131,8 +131,9 @@
         var auxKeyCode = 48; //tecla 0;
          
         mc.on("panleft panright panup pandown panend press", function(e) {
-                alert(e.changedTouches)
-     
+                let touches = e.changedTouches
+                console.log(touches);
+                alert(touches)
                 if(e.type === "panleft") { 
                     auxKeyCode = 37;   
                 } else if(e.type === "panright") {
@@ -146,7 +147,7 @@
                 document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
                 }
            
-           if(e.changedTouches == 2){
+           if(touches == 2){
                 alert("2 eventos"+e.changedTouches)
            }
         });
