@@ -125,35 +125,46 @@
        // ================== MOVIMENTACAO MOBILE =================================== //
 
         var mc = new Hammer(document.getElementById("container-game"));
+        var mfase = new Hammer(document.getElementById("container-fase"));
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
         var auxKeyCode = 48; //tecla 0;
-         
+        var pressfoiApertado = null;
 
-        mc.on("panleft panright panup pandown panend touchpress", function(e) {
-          
+        mc.on("panleft panright panup pandown panend press", function(e) {
+            if(!pressfoiApertado){
                 if(e.type === "panleft") { 
                     auxKeyCode = 37;   
                 } else if(e.type === "panright") {
                     auxKeyCode = 39;
                 } else if(e.type === "panup") {
                     auxKeyCode = 38;
+                    if(pressfoiApertado){
+                        mfase.scrollTop += e.deltaY;
+                        pressfoiApertado = null
+                        auxKeyCode = 48
+                    }
                 } else if(e.type === "pandown") {
                     auxKeyCode = 40;  
+                    if(pressfoiApertado){
+                        mfase.scrollTop += e.deltaY;
+                        pressfoiApertado = null
+                        auxKeyCode = 48
+                    }
+                } else if(e.type === "press") {
+                    pressfoiApertado = true  
                 } 
                 if(e.type === "panend"){
-                document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
+                    document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
                 }
-           
-           
-
+            }
         });
         
         var containerFase = document.getElementById("container-fase");
 
         window.addEventListener("wheel", function (e) {
-          containerFase.scrollTop += e.deltaY;
+           containerFase.scrollTop += e.deltaY;
         });
 
        
