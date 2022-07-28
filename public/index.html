@@ -133,7 +133,7 @@
         var pressfoiApertado = null;
 
         mc.on("panleft panright panup pandown panend press", function(e) {
-            if(!pressfoiApertado){
+            
                 if(e.type === "panleft") { 
                     auxKeyCode = 37;   
                 } else if(e.type === "panright") {
@@ -161,7 +161,7 @@
                 if(e.type === "panend"){
                     document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
                 }
-            }
+        
         });
         
         var containerFase = document.getElementById("container-fase");
