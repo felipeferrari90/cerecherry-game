@@ -142,14 +142,12 @@
                     auxKeyCode = 38;
                     if(pressfoiApertado){
                         mfase.scrollTop =  mfase.scrollTop + e.deltaY * 10;
-                        pressfoiApertado = null
                         auxKeyCode = 48
                     }
                 } else if(e.type === "pandown") {
                     auxKeyCode = 40;  
                     if(pressfoiApertado){
                         mfase.scrollTop =  mfase.scrollTop + e.deltaY * 10;
-                        pressfoiApertado = null
                         auxKeyCode = 48
                     }
                 } else if(e.type === "press") {
@@ -159,7 +157,10 @@
                        pressfoiApertado = null
                     }   
                 } 
-                if(e.type === "panend" && pressfoiApertado == null ){
+                if(e.type === "panend" ){
+                    if(pressfoiApertado){
+                        pressfoiApertado = null
+                    }
                     document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
                 }
         
