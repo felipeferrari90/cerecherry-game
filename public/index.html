@@ -153,7 +153,8 @@
                         auxKeyCode = 48
                     }
                 } else if(e.type === "press") {
-                    pressfoiApertado = true  
+                    pressfoiApertado = true 
+                    alert("press"); 
                 } 
                 if(e.type === "panend"){
                     document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
