@@ -152,12 +152,6 @@
         
         var containerFase = document.getElementById("container-fase");
 
-        mfase.on("",(e)=>{
-             if(e.touches.length > 1) containerFase.scrollTop += e.deltaY;
-        })
-
-        var containerFase = document.getElementById("container-fase");
-
         window.addEventListener("wheel", function (e) {
           containerFase.scrollTop += e.deltaY;
         });
