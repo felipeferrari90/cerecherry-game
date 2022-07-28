@@ -13,7 +13,7 @@
 //DEFINA O TAMANHO DA FASE E O NUMERO DE TILES HORIZONTAIS E VERTICAIS no construtor Fase
 
     //se você nao colocar argumento ele colocará 6 por default
-    const faseTemplate = new Fase(4,80); //new Fase(TilesHorizontais,TilesVerticais)
+    const faseTemplate = new Fase(4,4); //new Fase(TilesHorizontais,TilesVerticais)
  
     //DEFINA O NUMERO DA SUA FASE: (number)
     faseTemplate.faseNumber = 1
