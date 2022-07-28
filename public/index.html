@@ -125,7 +125,7 @@
        // ================== MOVIMENTACAO MOBILE =================================== //
 
         var mc = new Hammer(document.getElementById("container-game"));
-        var mfase = new Hammer(document.getElementById("container-fase"));
+        var mfase = document.getElementById("container-fase");
 
         mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
