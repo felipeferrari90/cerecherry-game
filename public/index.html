@@ -132,7 +132,7 @@
         var auxKeyCode = 48; //tecla 0;
         var pressfoiApertado = null;
 
-        mc.on("panleft panright panup pandown panend press", function(e) {
+        mc.on("panleft panright panup pandown panend press touchend", function(e) {
             
                 if(e.type === "panleft") { 
                     auxKeyCode = 37;   
@@ -141,22 +141,23 @@
                 } else if(e.type === "panup") {
                     auxKeyCode = 38;
                     if(pressfoiApertado){
-                       
-                        mfase.scrollTop =  mfase.scrollTop + e.deltaY * 2;
+                        mfase.scrollTop =  mfase.scrollTop + e.deltaY * 10;
                         auxKeyCode = 48
                     }
                 } else if(e.type === "pandown") {
                     auxKeyCode = 40;  
                     if(pressfoiApertado){
-                        mfase.scrollTop =  mfase.scrollTop + e.deltaY * 2;
+                        mfase.scrollTop =  mfase.scrollTop + e.deltaY * 10;
                         auxKeyCode = 48
                     }
                 } else if(e.type === "press") {
-                    pressfoiApertado = true 
-                   
+                    pressfoiApertado = true   
+                } else if(e.type === "touchend") {
+                    if(pressfoiApertado){
+                       pressfoiApertado = null
+                    }   
                 } 
-                if(e.type === "panend"){
-                    pressfoiApertado = null
+                if(e.type === "panend" && pressfoiApertado == null ){
                     document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
                 }
         
