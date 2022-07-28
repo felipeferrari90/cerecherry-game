@@ -141,6 +141,7 @@
                 } else if(e.type === "panup") {
                     auxKeyCode = 38;
                     if(pressfoiApertado){
+                        alert("escrolou pra cima")
                         mfase.scrollTop += e.deltaY;
                         pressfoiApertado = null
                         auxKeyCode = 48
@@ -148,6 +149,7 @@
                 } else if(e.type === "pandown") {
                     auxKeyCode = 40;  
                     if(pressfoiApertado){
+                        alert("escrolou pra baixo")
                         mfase.scrollTop += e.deltaY;
                         pressfoiApertado = null
                         auxKeyCode = 48
