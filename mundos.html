@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/sprites/cereja-1." type="image/x-icon">
+    <link rel="shortcut icon" href="/sprites/cereja-1.png" type="image/x-icon">
     <title>Mundos</title>
     <!-- <link rel="stylesheet" href="sprites.css"> -->
     <link rel="stylesheet" href="mundos.css">
@@ -32,11 +32,11 @@
                     
                     <div class="group-progress">
                         <div class="espada-cima"></div>
-                        <p>3/10</p>
+                        <p id="fasesPassadas">3/10</p>
                     </div>
                 </div>
 
-                <progress class="progressBar" value="3" max="10">
+                <progress class="progressBar"  max="10">
                 </progress>
                 <!-- <div class="number-progress">25%</div> -->
 
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <progress class="progressBar" value="5" max="10">
+                <progress class="progressBar" value="5" max="8">
                 </progress>
                 <!-- <div class="number-progress">25%</div> -->
 
@@ -193,11 +193,13 @@
 
     <script>
 
+        var fasesPassadas = document.getElementById("fasesPassadas")
         var progress = document.getElementsByClassName("progressBar")[0]
         var faseAtual = localStorage["passedLevels"]
         progress.value = faseAtual
         progress.setAttribute('data-content', `${Math.ceil(faseAtual/Number(progress.max) * 100)}` + '%')
-
+        fasesPassadas.textContent = faseAtual + "/10"
+        
         
         // var progress2 = document.getElementsByClassName("progressBar")[1]
         // // var faseAtual = localStorage["passedLevels"]
