@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/sprites/cereja-1." type="image/x-icon">
+    <title>Mundos</title>
+    <!-- <link rel="stylesheet" href="sprites.css"> -->
+    <link rel="stylesheet" href="mundos.css">
+</head>
+
+<body>
+    
+    <h3>MUNDOS</h3>
+
+    <div class="container">
+        <!-- CARD 1 -->
+        <div class="card" data-world="1">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/10</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" value="3" max="10">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="card" data-world="2">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/12</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" value="5" max="10">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="card" data-world="3">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/12</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" value="3" max="12">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+        <!-- CARD 4-->
+
+        <div class="card" data-world="4">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/12</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" value="3" max="12">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card" data-world="5">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/12</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" value="3" max="12">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card" data-world="6">
+            <div class="title-emoji">
+                <p>CEREJEIRA</p>
+                <div class="emoji"></div>
+            </div>
+
+            <div class="imagem-card"></div>
+            
+            <div class="progress-bar">
+
+                <div class="label-progress">
+                    <p>PROGRESSO</p>
+                    
+                    <div class="group-progress">
+                        <div class="espada-cima"></div>
+                        <p>3/12</p>
+                    </div>
+                </div>
+
+                <progress class="progressBar" max="10">
+                </progress>
+                <!-- <div class="number-progress">25%</div> -->
+
+            </div>
+            
+        </div>
+
+    </div>
+    
+    <span class="espada-esquerda">INÍCIO</span>
+
+    <script>
+
+        var progress = document.getElementsByClassName("progressBar")[0]
+        var faseAtual = localStorage["passedLevels"]
+        progress.value = faseAtual
+        progress.setAttribute('data-content', `${Math.ceil(faseAtual/Number(progress.max) * 100)}` + '%')
+
+        
+        // var progress2 = document.getElementsByClassName("progressBar")[1]
+        // // var faseAtual = localStorage["passedLevels"]
+        // progress2.value = faseAtual
+        // progress2.setAttribute('data-content', `${Math.ceil(faseAtual/Number(progress2.max) * 100)}` + '%')
+        
+        // localStorage["world"] = 1
+
+    </script>
+    
+</body>
+
+</html>
