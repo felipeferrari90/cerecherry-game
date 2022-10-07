@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/sprites/cereja-1.png" type="image/x-icon">
     <title>Cerecherry</title>
     <link rel="stylesheet" type="text/css" href="game.css">
     <link rel="stylesheet" type="text/css" href="sprites.css">
@@ -23,7 +24,7 @@
         <div class="display-items">
             <div id="button-help"></div>
         </div>
-   
+  
     </div>
     <script src="fase.js"></script>
     <script src="hammer.min.js"></script> 
@@ -88,7 +89,7 @@
             document.getElementById("container-game").classList.add("screenAllFases")
             document.getElementById("fase-number").textContent = "world 1";
             document.getElementById("fase-name").textContent = "CEREJEIRA"; 
-            document.getElementsByClassName("display-items")[0].innerHTML = "mundos"; 
+            document.getElementsByClassName("display-items")[0].innerHTML = "<a href='./mundos'>mundos</a>"; 
 
             let containerFase = document.getElementById("container-fase");
             containerFase.style.gridTemplateColumns = 'none';

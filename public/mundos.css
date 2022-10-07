@@ -1,0 +1,199 @@
+body{
+    margin: 0;
+    /* background-color: #FFC000; */
+    font-family: 'K2D', sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    width: 100vw;
+    /* position: fixed; */
+    overflow: hidden;
+    background-image: url("sprites/cerefundo2x.png");
+    background-size: cover;
+    background-position-y: 70px;
+    color: #D11E3C;
+    
+}
+
+h3{
+    text-align: center;
+}
+
+.container{
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 8px
+   
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+  }
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color:  #FFC000;
+    border-radius:20px;
+    /* height: 60vh; */
+    width: 75vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    max-width: min-content; 
+    padding: 24px;
+}
+
+.title-emoji{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 3px;
+  
+
+}
+/* .emoji {
+    background-image: url("sprites/Asset 3.png");
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+} */
+
+
+.imagem-card {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background: url("sprites/thumbnailworld1.png"), #FEFEFE;
+    background-size: cover;
+    /* background: white; */
+    border: 3px solid #D11E3C;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    
+}
+
+.label-progress{
+    /* width: max-content; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.group-progress{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+
+.progress-bar{
+    width: 100%;
+}
+
+.espada-cima{
+    display: block;
+    background-image: url('sprites/espada-acima.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    /* padding: 20px; */
+    /* margin: 10px */
+}
+.espada-cima{
+    display: block;
+    background-image: url('sprites/espada-acima.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    /* padding: 20px; */
+    /* margin: 10px */
+}
+
+.espada-esquerda{
+    display: block;
+    background-image: url('sprites/espada-esquerda.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+   
+    text-indent: 30px;
+    margin-top: 24px;
+    /* padding: 20px; */
+    /* margin: 10px */
+}
+
+progress{
+
+    -webkit-appearence: none;
+    -appearence: none;
+    background-color: #D9D9D9;
+    height: 20px;
+    width: 100%;
+    border-radius: 50%;
+
+}
+
+progress:after{
+    
+    content: attr(data-content);
+    color: #d11e3c;
+    position: relative;
+    right: -45%;
+    top: -90%;
+    font-weight: bold;
+    
+}
+
+progress::-webkit-progress-bar {
+    
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    height:20px;
+    
+}
+
+progress::-webkit-progress-value{
+    
+    background-color: #5258F5;
+    border-radius: 20px;
+    height: 20px;
+    mix-blend-mode: multiply;
+    transition: 1s
+    
+}
+
+span{
+    font-weight:bolder;
+}
+
+/* progress[value] {
+    background-color: white;
+    padding:20px;
+
+    border-radius: 25px;
+
+}*/
+
+
+/* progress::-webkit-progress-value::before{
+    
+    content: '25%';
+    color: black;
+    position: absolute;
+    right: 0;
+    top: 50%
+
+} */
+/* 
+.number-progress{
+    color: black;
+    z-index: 1
+} */
