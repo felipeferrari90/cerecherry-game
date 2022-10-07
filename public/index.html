@@ -5,176 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cerecherry</title>
-    <link rel="stylesheet" type="text/css" href="game.css">
-    <link rel="stylesheet" type="text/css" href="sprites.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+    <link rel="stylesheet" type="text/css" href="css/sprites.css">
+    <link rel="stylesheet" type="text/css" href="css/cano.css">
     <link rel="stylesheet" type="text/css" href="fonts/font.css">
 </head>
 <body>
     <div id="container-game" >
         <div id="container-buttons">
-            <div id="button-allfases" onclick="allFases()"></div>
+            <div id="button-allfases" onclick="Tela.trocar(Tela.TELA_MUNDO)">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="button-allfases-path-1" d="M14 6H6V14H14V6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path id="button-allfases-path-2" d="M26 6H18V14H26V6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path id="button-allfases-path-3" d="M14 18H6V26H14V18Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path id="button-allfases-path-4" d="M26 18H18V26H26V18Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             <div id="fase-number"></div>
-            <div id="button-refresh"onclick="refreshFase()"></div>
-        </div>
+            <div id="button-refresh"onclick="Tela.recarregar()">
+                <svg id="svg-button-refresh" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="svg-button-refresh-path-1" d="M9.97501 12.4625H3.97501V6.46249" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path id="svg-button-refresh-path-2" d="M8.22501 23.775C9.76303 25.3143 11.723 26.3628 13.8571 26.788C15.9911 27.2132 18.2033 26.9958 20.2138 26.1635C22.2243 25.3312 23.9428 23.9213 25.1519 22.1122C26.361 20.3031 27.0064 18.176 27.0064 16C27.0064 13.824 26.361 11.6969 25.1519 9.8878C23.9428 8.07866 22.2243 6.66877 20.2138 5.83647C18.2033 5.00417 15.9911 4.78686 13.8571 5.21202C11.723 5.63719 9.76303 6.68573 8.22501 8.22501L3.97501 12.4625" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+               </div>
+           </div>
         <div id="fase-name"></div>
         <div id="container-fase">
-            <!-- CONTENT -->
+            <!-- FASE SERA TODA RENDERIZADA AQUI -->
         </div>
         <div class="display-items">
             <div id="button-help"></div>
         </div>
    
     </div>
-    <script src="fase.js"></script>
-    <script src="hammer.min.js"></script> 
+    <!-- libs externas -->
+    <script src="lib/hammer.min.js" ></script>
+
+    <!-- storage -->
+    <script src="js/banco.js" ></script>
+
+    <!-- utilitários -->
+    <script src="utils/direcoes.js" ></script>
+    <script src="utils/util.js" ></script>
+    <script src="utils/ponto.js" ></script>
+    <script src="utils/spritesUtil.js" ></script>
+
+     <!-- elementos do jogo -->
+    <script src="js/jogo.js" ></script>
+    <script src="js/mundo.js" ></script>
+    <script src="js/tela.js" ></script>
+    <script src="js/cereja.js" ></script>
+    <script src="js/espada.js" ></script>
+    <script src="js/inicio.js" ></script>
+    <script src="js/porao.js" ></script>
+    <script src="js/canos.js" ></script>
+    <script src="js/personagem.js" ></script>
+    <script src="js/fase.js" ></script>
+
+    <!-- mobile -->
+    <script src="js/mobile.js" /></script>
+    
     <script>
 
-        var currentLevel = 1;
-        var showScreenChoiceFase;
-        var passedLevels;
-
-
-
-        if(localStorage["level"]){
-           this.currentLevel = +localStorage["level"];
-        }else{
-           localStorage["level"] = 1;
-        }
-        
         var srcfase = document.createElement('script');
-        srcfase.src = "fases/fase"+currentLevel+".js";
+        srcfase.src = "fases/world"+Banco.getMundoAtual()+"/fase"+Banco.getFaseAtual()+".js";
         document.body.appendChild(srcfase);
-
-
-        if(localStorage["screenChoice"]){
-            this.showScreenChoiceFase = localStorage["screenChoice"] == 'true' ?  true : false ;
-        }else{
-            localStorage["screenChoice"] = 'false';
-        }
-
-        if(localStorage["passedLevels"]){
-            this.passedLevels = +localStorage["passedLevels"];
-        }else{
-            localStorage["passedLevels"] = 0; 
-        }
-
-        if(showScreenChoiceFase == true){ 
-            this.renderingAllFases();
-        } 
-        
-        function refreshFase(numeroFase){
-            localStorage["level"] = +numeroFase || +this.currentLevel;
-            document.location.reload(false);
-        }
-
-        function proximaFase(){
-            localStorage["level"] = this.currentLevel + 1;
-            if(this.passedLevels < this.currentLevel){
-                localStorage["passedLevels"] = passedLevels + 1;
-            }
-            document.location.reload(false);
-        }
-
-        function allFases(){
-            localStorage["screenChoice"] = 'true';
-            document.location.reload(false);
-        }
-        function pickFase(numeroFase){
-            localStorage["screenChoice"] = 'false'
-            this.refreshFase(numeroFase); 
-        }
-
-        function renderingAllFases(){
-            document.getElementById("container-game").classList.add("screenAllFases")
-            document.getElementById("fase-number").textContent = "world 1";
-            document.getElementById("fase-name").textContent = "CEREJEIRA"; 
-            document.getElementsByClassName("display-items")[0].innerHTML = "mundos"; 
-
-            let containerFase = document.getElementById("container-fase");
-            containerFase.style.gridTemplateColumns = 'none';
-            containerFase.style.zoom = 'none';
-            containerFase.textContent = "";
-
-            let containerGridLevels = document.createElement('div');
-            containerGridLevels.classList.add('container-grid-levels');
-            containerFase.appendChild(containerGridLevels);
-            for(let i=1 ; i <= 12 ; i++){
-                let buttonLevel = document.createElement('div');
-                buttonLevel.classList.add('button-level');
-                buttonLevel.textContent = i;
-                let handleFaseFunction = () => {this.pickFase(i)};
-                if(i <= +this.passedLevels){
-                    buttonLevel.classList.add("level-passed");
-                    buttonLevel.addEventListener('click',  handleFaseFunction )
-                  
-                }
-                if(i == +this.passedLevels + 1){
-                    buttonLevel.classList.add("level-current");
-                    buttonLevel.addEventListener('click',  handleFaseFunction )
-                }
-                if(i > this.passedLevels + 1){
-                    buttonLevel.classList.add("level-locked");
-                }
-                containerGridLevels.appendChild(buttonLevel);
-            }
-            
-        }
-
-       // document.getElementById("button-help").addEventListener("onclick",()=>{console.log("modal PORRA")})
-       console.log(document.getElementById("button-help"))
-       // ================== MOVIMENTACAO MOBILE =================================== //
-
-        var mc = new Hammer(document.getElementById("container-game"));
-        var mfase = document.getElementById("container-fase");
-
-        mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-        var auxKeyCode = 48; //tecla 0;
-        var pressfoiApertado = null;
-
-        mc.on("panleft panright panup pandown panend press touchend", function(e) {
-            
-                if(e.type === "panleft") { 
-                    auxKeyCode = 37;   
-                } else if(e.type === "panright") {
-                    auxKeyCode = 39;
-                } else if(e.type === "panup") {
-                    auxKeyCode = 38;
-                    if(pressfoiApertado){
-                        mfase.scrollTop =  mfase.scrollTop - e.deltaY * 0.25;
-                        auxKeyCode = 48
-                    }
-                } else if(e.type === "pandown") {
-                    auxKeyCode = 40;  
-                    if(pressfoiApertado){
-                        mfase.scrollTop =  mfase.scrollTop - e.deltaY * 0.25;
-                        auxKeyCode = 48
-                    }
-                } else if(e.type === "press") {
-                    pressfoiApertado = true   
-                } else if(e.type === "touchend") {
-                    if(pressfoiApertado){
-                       pressfoiApertado = null
-                    }   
-                } 
-                if(e.type === "panend" ){
-                    if(pressfoiApertado){
-                        pressfoiApertado = null
-                    }
-                    document.body.dispatchEvent(new KeyboardEvent('keydown', {keyCode: auxKeyCode }));
-                }
-        
-        });
-        
-        var containerFase = document.getElementById("container-fase");
-
-        window.addEventListener("wheel", function (e) {
-           containerFase.scrollTop += e.deltaY;
-        });
-
-       
-        
-
+    
+        let cerecherryGame = new Game();
+        cerecherryGame.iniciar()
+    
     </script>
+
 </body>
 </html>

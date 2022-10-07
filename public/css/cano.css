@@ -1,0 +1,75 @@
+.cano{
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    z-index: 2;
+}
+.cano-mario-cima , .cano-mario-baixo,.cano-mario-esquerda, .cano-mario-direita {
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    z-index: 2;
+}
+.cano-mario-cima{
+    background-image: url("../img/svgs/cano-mario.svg");
+    transform: rotate(180deg);
+}
+.cano-mario-esquerda{
+    background-image: url("../img/svgs/cano-mario.svg");
+    transform: rotate(90deg);
+}
+.cano-mario-direita{
+    background-image: url("../img/svgs/cano-mario.svg");
+    transform: rotate(270deg);
+}
+.cano-mario-baixo{
+    background-image: url("../img/svgs/cano-mario.svg");
+}
+.cano-horizontal{
+    background-image: url("../img/svgs/cano-reto.svg");
+    transform: rotate(90deg);
+}
+
+.cano-vertical{
+    background-image: url("../img/svgs/cano-reto.svg");
+    background-position-x: 100%;
+}
+
+.cano-horizontal.cano-vertical{
+    background-image: url("../img/svgs/cano-cruzado.svg");
+    background-position-x: unset;
+}
+
+.cano-curva-cima-direita{
+    background-image: url("../img/svgs/cano-curvado.svg");
+}
+.cano-curva-baixo-esquerda{
+    background-image: url("../img/svgs/cano-curvado.svg");
+    transform: rotate(180deg);
+  
+}
+.cano-curva-cima-esquerda{
+    background-image: url("../img/svgs/cano-curvado.svg");
+    transform: rotate(270deg);
+}
+.cano-curva-baixo-direita{
+    background-image: url("../img/svgs/cano-curvado.svg");
+    transform: rotate(90deg);
+}
+
+.cano-curva-cima.cano-curva-baixo{
+    background-image: url("../img/svgs/cano-curvado-duplo.svg");
+}
+.cano-curva-cima.cano-curva-baixo{
+    background-image: url("../img/svgs/cano-curvado-duplo.svg");
+}
+.cano-tres-saidas{
+
+}
+

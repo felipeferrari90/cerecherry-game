@@ -4,13 +4,14 @@ const app = express();
 
 
 app.get('/',function(req,res){
-  res.header('Cache-Control', 'no-cache, no-store, must-revalidate')
+
   res.set({
     'Content-Type': 'text/html',
   })
   res.sendFile(path.join(__dirname+'/public/index.html'));
 });
 
+app.use(express.static('public'))
 
-app.listen(8000);
+app.listen(8002);
 

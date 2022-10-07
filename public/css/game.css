@@ -1,13 +1,11 @@
 *{
-   box-sizing: border-box;
-   scroll-behavior: smooth;
+   box-sizing: content-box;
+   /*scroll-behavior: smooth; */
 }
 body{
     margin: 0;
-    background-color: #FFC000;
     font-family: 'K2D', sans-serif;
 }
-
 #container-game{
    flex-direction: column;
    display: flex;
@@ -17,7 +15,6 @@ body{
    height: 100%;
 }
 #container-fase{
-    
     position: relative;
     display: grid;
     margin: 0 auto;
@@ -25,7 +22,6 @@ body{
     overflow-y: hidden;
     padding-top: 50px;
     padding-bottom: 50px;
-    mouse-wheel:horizontal;
 }
 #container-buttons{
    display: flex;
@@ -53,27 +49,30 @@ body{
    font-weight: bold;
    text-align: center;
 }
+
 #fase-number{
    font-size: 45px;
    font-family: 'K2D';
    font-weight: 500;
    align-self:flex-start;
-   
 }
+
 #button-refresh{
-   background-image: url("./icons/refresh.png"); 
+   /*background-image: url("../img/svgs/ArrowCounterClockwise.svg"); */
 }
+
 #button-allfases{
-   background-image: url("./icons/allFases.png"); 
+   /*background-image: url("../img/svgs/SquaresFour.svg"); */
 }
+
 #button-help{
-   background-image: url("./icons/help.png"); 
+   background-image: url("../img/icons/help.png"); 
 }
 
 #container-game.screenAllFases .display-items{
    justify-content: flex-start;
    height: 70px;
-   background-image: url('./sprites/espada-esquerda.png');
+   background-image: url('../img/sprites/espada-esquerda.png');
    background-repeat: no-repeat;
    text-indent: 66px;
    background-position-x: 16px;
@@ -88,7 +87,7 @@ body{
    width: 100%;
  
 }
-.display-items  #button-help{
+.display-items #button-help{
   align-self: center;
   margin: auto 0 auto auto;
 }
@@ -101,15 +100,22 @@ body{
    flex-wrap: nowrap;
    zoom: 1;
 }
-
-.tile{
-   background-color: rgb(242, 242, 242);
+.tile, .nully{
    max-width: 70px;
    max-height: 70px;
+   min-width: 20px;
+   min-height: 20px;
+   
    position: relative;
-   border: 1px solid  rgb(242, 242, 242);
 }
-.tile.nully{
+.tile{
+   background-color: rgb(242, 242, 242);
+   border: 1px solid white;
+}
+.tile.border-cima , .tile.border-baixo , .tile.border-direita , .tile.border-esquerda{
+   /*box-sizing: border-box*/
+} 
+.nully{
    opacity: 1;
    background-image: unset;
    background-color: transparent;
@@ -131,10 +137,9 @@ body{
 
 
 .current::after{
-    background-color: blueviolet !important;
+      background: #B473d7; 
       position: absolute;
-     /* background: rgba(142, 68, 173, 1); */
-      box-shadow: 0 0 0 0 rgba(142, 68, 173, 1);
+      box-shadow: 0 0 0 0 rgba(180,215,215,1);
       animation: pulse 1s infinite;
       content: "";
       width: 100%;
@@ -198,10 +203,9 @@ div[class^="trace"]{
    border-left: 1px solid black;
 }
 .container-grid-levels{
-   display: inline-grid;
+   display: grid;
    grid-template-columns: repeat(4,70px);
-   grid-template-rows: repeat(3,70px);
-   gap: 14px 8px;
+   gap: 24px 8px;
    padding: 16px;
 }
 .button-level{
@@ -232,7 +236,7 @@ div[class^="trace"]{
    width: 32px;
    height: 35px;
    background-size: cover;
-   background-image: url('./icons/lock.png');
+   background-image: url('../img/icons/lock.png');
    background-repeat: no-repeat;
 }
 
@@ -245,18 +249,11 @@ div[class^="trace"]{
    top: -109%;
    left: 36%;
    background-position-y: -20px ;
-   background-image: url('./sprites/inicio-cima.png');
+   background-image: url('../img/sprites/inicio-cima.png');
    background-repeat: no-repeat;
    
    
 }
-/*
-.button-level.level-current{
-   text-indent: 1.5ch;
-   float: right;
-}
-*/
-
 
 .modal-comments{
    position: absolute;
@@ -265,10 +262,13 @@ div[class^="trace"]{
    padding: 15px;
    background-color:black;
    opacity: 0.8;
+   z-index: 3;
   
 }
 
-
+.sem-ponto{
+   background-image: unset;
+}
 .speak:last-child{
    position:absolute;
    width: 80%;
@@ -296,13 +296,13 @@ div[class^="trace"]{
    bottom: 8px;
    margin-top: 16px;
    clear: both;
-   background-image: url("./icons/x.png");
+   background-image: url("../img/icons/x.png");
    background-repeat: no-repeat;
    background-size: cover;
    
 }
 #item-espada{
-   background-image: url("./sprites/espada-acima.png");
+   background-image: url("../img/sprites/espada-acima.png");
    background-size: contain;
    background-repeat: no-repeat;
    text-indent: 30px;

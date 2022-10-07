@@ -1,4 +1,4 @@
-class Fase{
+class OLDFase{
     faseNumber = 0;
     faseName;
     comments = [];
@@ -17,6 +17,7 @@ class Fase{
     items = {
         espada : 0,
         raio : 0,
+        milkshake: 0,
         R : 0
     };
     eleMoveu = null;
@@ -46,7 +47,7 @@ class Fase{
                  }
             }
           
-            //this.applicateZoom() - NOT USABLE
+
             this.tilesWall.forEach((coord) => {
                 let tile = document.getElementById('tile-'+coord)
                 tile?.classList.add('wall')
@@ -163,22 +164,7 @@ class Fase{
         }
        
     }
-    renderInits(){
-        this.tilesStart.forEach((coord,index) => {
-            console.log(coord)
-            let coordDirection = coord.split("-").pop()
-            let coordNumbers = coord.split("-").slice(0,2).join("-")
-            let element = document.getElementById("tile-"+coordNumbers)
-            let elementDiv = document.createElement("div")
-            elementDiv.classList.add("inicio")
-            elementDiv.classList.add("inicio-"+coordDirection)
-            element.appendChild(elementDiv)
-            element.addEventListener("click",this.addInitCurrent.bind(this),true) 
-            this.tilesStart[index] = element
-        }) 
-        this.tilesStart[0].classList.add("current")
-        this.currentTile = this.tilesStart[0];
-    }
+   
     addInitCurrent(e){
         if(!this.firstMove){
             let elementWithCurrent = document.getElementsByClassName("current")[0];
